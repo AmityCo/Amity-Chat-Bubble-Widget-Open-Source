@@ -23,17 +23,8 @@ export const RegisterComp = () => {
   const [displayName] = useState(searchParams.get("displayName"));
   const [email] = useState(searchParams.get("email"));
   const [phoneNumber] = useState(searchParams.get("phoneNumber"));
-  // console.log("apiKey", searchParams.get("apiKey"));
-  // console.log("userId", searchParams.get("userId"));
-  // console.log("displayName", searchParams.get("displayName"));
   const { user, loading, error } = useSelector((store) => store.user);
-  // const [regData, setRegData] = useState({
-  //   pic: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
-  //   isAdmin: false,
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  // });
+
   const [amityUser, setAmityUser] = useState({
     displayName: "",
     userId: "",
@@ -46,7 +37,6 @@ export const RegisterComp = () => {
 
   useEffect(() => {
     if (apiKey) {
-      console.log("apiKey: ", "pass");
       autoLogin();
     }
   }, []);
@@ -81,12 +71,10 @@ export const RegisterComp = () => {
             token: accessToken,
           });
           setOnConnected(true);
-          // navigate("/");
         } else {
           console.log(" not connected to asc");
         }
       });
-      console.log("client: ", client);
     }
   }
   function login() {
@@ -94,12 +82,12 @@ export const RegisterComp = () => {
       apiKey: "b3babb0b3a89f4341d31dc1a01091edcd70f8de7b23d697f",
       apiEndpoint: ApiEndpoint.SG,
     });
-    // modify your server region here e.g ApiEndpoint.EU
+
     if (amityUser.userId.length > 0) {
       client.registerSession({
         userId: amityUser.userId,
         displayName: amityUser.displayName,
-      }); // Add your own userId and displayName
+      });
       client.on("connectionStatusChanged", ({ newValue }) => {
         console.log("newValue: ", newValue);
         if (newValue === ConnectionStatus.Connected) {
@@ -114,13 +102,11 @@ export const RegisterComp = () => {
           console.log(" not connected to asc");
         }
       });
-      console.log("client: ", client);
     }
   }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // setRegData({ ...regData, [name]: value });
     setAmityUser({ ...amityUser, [name]: value });
   };
 
@@ -169,13 +155,8 @@ export const RegisterComp = () => {
             <h2 className="auth-heading">Create an account</h2>
             <div>
               <div className="profile-pic">
-                {/* <input onChange={handleInputFile} type="file" name="" id="file" /> */}
-                {/* <label htmlFor="file" id="uploadBtn"> */}
-                {/* <img id="photo" src={user.pic ? user.pic : avatar} /> */}
                 <img id="photo" src={avatar} />
-                {/* </label> */}
               </div>
-              {/* <p className="profile-text">Choose Profile</p> */}
             </div>
             <div className="details-cont">
               <p>Display name</p>
@@ -197,32 +178,7 @@ export const RegisterComp = () => {
                 name="email"
                 className="inputcom"
               />
-              {/* <p>Password</p>
-        <input
-          onChange={handleChange}
-          type="password"
-          name="password"
-          className="inputcom"
-        />
-
-        <p>Confirm Password</p>
-        <input type="password" className="inputcom" /> */}
-
-              {loading ? (
-                <ColorButton disabled>
-                  <CircularProgress style={{ color: "white" }} />
-                </ColorButton>
-              ) : (
-                <ColorButton onClick={handleSubmit}>Continue</ColorButton>
-              )}
-
-              {/* <Link className="auth-link" to={"/login"}>
-          Already have an account
-        </Link> */}
-              <p className="contract">
-                {/* By registering you agree to Messenger's{" "}
-          <span>Terms of Service</span> and <span>Privacy Policy</span>. */}
-              </p>
+              <p className="contract"></p>
             </div>
           </div>
         </div>
