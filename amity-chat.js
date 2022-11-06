@@ -1,7 +1,7 @@
 let iframeUrl = "";
-const style = document.createElement("style");
-style.type ="text/css"
-style.innerHTML = `
+const fontawesomeStyle = document.createElement("style");
+fontawesomeStyle.type = "text/css";
+fontawesomeStyle.innerHTML = `
 /*!
 *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
 *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -2200,7 +2200,7 @@ style.innerHTML = `
  margin: 0;
  overflow: visible;
  clip: auto;   }`;
- style.innerHTML+=`#amity-chatframe{-webkit-transform:translateZ(0);position:fixed;right:18pt;z-index:10000000;width:370px;min-height:250px!important;max-height:1000px!important;height:80%;bottom:20px;border-radius:15px;box-shadow:rgba(0,0,0,.15) 0 3pt 12pt;display:none;max-width:88vw;overflow:hidden;background:#fff}#amity-chattitle{height:50px;width:100%;border-top-left-radius:15px;border-top-right-radius:15px}#amity-chattitle>h4{text-align:center;line-height:50px;color:#fff;font-weight:700;font-size:16px;margin-top:0;margin-bottom:0}#amity-chatframe-iframe{width:100%;position:absolute;bottom:0;overflow:hidden;height:calc(100% - 50px);border-bottom-left-radius:15px;border-bottom-right-radius:15px}#amity-chatbtn{outline-color:transparent;position:fixed;bottom:18pt;right:18pt;z-index:9999999;border-radius:45pt;border:none;visibility:hidden;padding:0}.new-message-badge{position:absolute;top:0;right:0;padding:6px;border-radius:15px;color:#fff;background:#b94a48}#amity-chatclose-icon{display:none}#amity-chat-icon{}#amity-preform{position:fixed;display:none;right:18pt;z-index:9999999;padding:10px;border:none;max-width:90%}.amity-preform-dialog{border:none;padding:20px;width:30vw;box-shadow:0 1px 2px rgba(0,0,0,.3),0 1px 1px rgba(0,0,0,.2)!important;background-color:#fff!important;border-radius:7pt;margin-bottom:10pt;max-width:90%}.amity-prefill-label{font-size:20px;width:8%;text-align:right;margin-right:6px}.amity-prefill-field{outline:none!important;font-size:14px;border:1px dashed #ccc;width:72%;background:0 0;padding:5px 8px;border-radius:5px;margin-bottom:10pt}.amity-prefill-submit{margin-left:10px;width:34px;height:34px;border-radius:25px;background:0 0;border:1px dashed #bbb;padding-top:5px;font-size:16px!important}#amity-preform.tray h4{text-align:center;margin-top:-20px;margin-bottom:20px;margin-left:-20px;margin-right:-20px;padding:7px 0;background:grey;color:#fff;font-weight:700;border-top-left-radius:10px;border-top-right-radius:10px;font-size:15px}#amity-preform.tray{bottom:-30px;right:10px!important}#amity-preform.bubble h4{display:none}#amity-preform.tray>.amity-preform-dialog{padding-bottom:25px!important}#amity-preform.tray .amity-prefill-field{width:94%}#amity-preform.tray .amity-prefill-label>i{display:none}#amity-preform.bubble .amity-prefill-label>b{display:none}.amity-prefill-submit-container{width:100%;text-align:right}#amity-preform.bubble .amity-preform-close-btn{display:none}#amity-preform.tray .amity-preform-close-btn{color:#fff;position:absolute;cursor:pointer;top:17px;right:18px;background:0 0;border:none;border-radius:20px;font-size:18px}#amity-chatclose-topright{display:none}.shake{animation:shake .5s;animation-iteration-count:infinite}@keyframes shake{0%{transform:translate(1px,1px) rotate(0deg)}10%{transform:translate(-1px,-2px) rotate(-1deg)}20%{transform:translate(-3px,0px) rotate(1deg)}30%{transform:translate(3px,2px) rotate(0deg)}40%{transform:translate(1px,-1px) rotate(1deg)}50%{transform:translate(-1px,2px) rotate(-1deg)}60%{transform:translate(-3px,1px) rotate(0deg)}70%{transform:translate(3px,1px) rotate(-1deg)}80%{transform:translate(-1px,-1px) rotate(1deg)}90%{transform:translate(1px,2px) rotate(0deg)}100%{transform:translate(1px,-2px) rotate(-1deg)}}@media only screen and (max-width:768px){#close-btn-topright{display:block!important}#amity-chatframe{width:100vw!important;max-width:100vw;left:0;height:100%;top:0;bottom:95px;border-radius:0;max-height:100%!important}#amity-chattitle{border-radius:0}#amity-chattitle{border-radius:0}#amity-chatbtn.opened{z-index:0!important}#amity-chatbtn.opened.hide{box-shadow:none!important;background-color:transparent}#amity-chatclose-topright.opened{display:block;position:absolute;top:13px;right:13px}}#amity-preform-input-name-wrapper:focus-within{border-color:#00beae!important}`
+fontawesomeStyle.innerHTML += `#amity-chatframe{-webkit-transform:translateZ(0);position:fixed;right:18pt;z-index:10000000;width:370px;min-height:250px!important;max-height:1000px!important;height:80%;bottom:20px;border-radius:15px;box-shadow:rgba(0,0,0,.15) 0 3pt 12pt;display:none;max-width:88vw;overflow:hidden;background:#fff}#amity-chattitle{height:50px;width:100%;border-top-left-radius:15px;border-top-right-radius:15px}#amity-chattitle>h4{text-align:center;line-height:50px;color:#fff;font-weight:700;font-size:16px;margin-top:0;margin-bottom:0}#amity-chatframe-iframe{width:100%;position:absolute;bottom:0;overflow:hidden;height:calc(100% - 50px);border-bottom-left-radius:15px;border-bottom-right-radius:15px}#amity-chatbtn{outline-color:transparent;position:fixed;bottom:18pt;right:18pt;z-index:9999999;border-radius:45pt;border:none;visibility:hidden;padding:0}.new-message-badge{position:absolute;top:0;right:0;padding:6px;border-radius:15px;color:#fff;background:#b94a48}#amity-chatclose-icon{display:none}#amity-chat-icon{}#amity-preform{position:fixed;display:none;right:18pt;z-index:9999999;padding:10px;border:none;max-width:90%}.amity-preform-dialog{border:none;padding:20px;width:30vw;box-shadow:0 1px 2px rgba(0,0,0,.3),0 1px 1px rgba(0,0,0,.2)!important;background-color:#fff!important;border-radius:7pt;margin-bottom:10pt;max-width:90%}.amity-prefill-label{font-size:20px;width:8%;text-align:right;margin-right:6px}.amity-prefill-field{outline:none!important;font-size:14px;border:1px dashed #ccc;width:72%;background:0 0;padding:5px 8px;border-radius:5px;margin-bottom:10pt}.amity-prefill-submit{margin-left:10px;width:34px;height:34px;border-radius:25px;background:0 0;border:1px dashed #bbb;padding-top:5px;font-size:16px!important}#amity-preform.tray h4{text-align:center;margin-top:-20px;margin-bottom:20px;margin-left:-20px;margin-right:-20px;padding:7px 0;background:grey;color:#fff;font-weight:700;border-top-left-radius:10px;border-top-right-radius:10px;font-size:15px}#amity-preform.tray{bottom:-30px;right:10px!important}#amity-preform.bubble h4{display:none}#amity-preform.tray>.amity-preform-dialog{padding-bottom:25px!important}#amity-preform.tray .amity-prefill-field{width:94%}#amity-preform.tray .amity-prefill-label>i{display:none}#amity-preform.bubble .amity-prefill-label>b{display:none}.amity-prefill-submit-container{width:100%;text-align:right}#amity-preform.bubble .amity-preform-close-btn{display:none}#amity-preform.tray .amity-preform-close-btn{color:#fff;position:absolute;cursor:pointer;top:17px;right:18px;background:0 0;border:none;border-radius:20px;font-size:18px}#amity-chatclose-topright{display:none}.shake{animation:shake .5s;animation-iteration-count:infinite}@keyframes shake{0%{transform:translate(1px,1px) rotate(0deg)}10%{transform:translate(-1px,-2px) rotate(-1deg)}20%{transform:translate(-3px,0px) rotate(1deg)}30%{transform:translate(3px,2px) rotate(0deg)}40%{transform:translate(1px,-1px) rotate(1deg)}50%{transform:translate(-1px,2px) rotate(-1deg)}60%{transform:translate(-3px,1px) rotate(0deg)}70%{transform:translate(3px,1px) rotate(-1deg)}80%{transform:translate(-1px,-1px) rotate(1deg)}90%{transform:translate(1px,2px) rotate(0deg)}100%{transform:translate(1px,-2px) rotate(-1deg)}}@media only screen and (max-width:768px){#close-btn-topright{display:block!important}#amity-chatframe{width:100vw!important;max-width:100vw;left:0;height:100%;top:0;bottom:95px;border-radius:0;max-height:100%!important}#amity-chattitle{border-radius:0}#amity-chattitle{border-radius:0}#amity-chatbtn.opened{z-index:0!important}#amity-chatbtn.opened.hide{box-shadow:none!important;background-color:transparent}#amity-chatclose-topright.opened{display:block;position:absolute;top:13px;right:13px}}#amity-preform-input-name-wrapper:focus-within{border-color:#00beae!important}`;
 
 window.addEventListener("load", function () {
   if (SDKManager.initSetting()) {
@@ -2208,22 +2208,23 @@ window.addEventListener("load", function () {
     ChatManager.onChatReady();
   }
 });
+
 const SDKManager = (function () {
   function SDKManager() {}
   SDKManager.appendIframe = function () {
     // Select the node that will be observed for mutations
-    var targetNode = document.getElementById("amity-chatframe");
+    const targetNode = document.getElementById("amity-chatframe");
     // Options for the observer (which mutations to observe)
-    var config = { attributes: true, childList: true, subtree: true };
+    const config = { attributes: true, childList: true, subtree: true };
     // Callback function to execute when mutations are observed
-    var callback = function (mutationsList, observer) {
+    const callback = function (mutationsList, observer) {
       // Use traditional 'for loops' for IE 11
       for (
-        var _i = 0, mutationsList_1 = mutationsList;
+        let _i = 0, mutationsList_1 = mutationsList;
         _i < mutationsList_1.length;
         _i++
       ) {
-        var mutation = mutationsList_1[_i];
+        const mutation = mutationsList_1[_i];
         if (mutation.type === "childList") {
           SDKManager.initIframeApp();
           observer.disconnect();
@@ -2231,96 +2232,36 @@ const SDKManager = (function () {
       }
     };
     // Create an observer instance linked to the callback function
-    var observer = new MutationObserver(callback);
+    const observer = new MutationObserver(callback);
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
-   /*  const iframeElement = document.createElement("iframe");
-    iframeElement.id = 'amity-chatframe-iframe'
-    iframeElement.frameBorder = '0'
-    iframeElement.scrolling = 'no'
-    iframeElement.marginHeight = '0'
-    iframeElement.marginwidth = '0'
-    iframeElement.src = iframeUrl
-    iframeElement.allowfullscreen = "true"
-    iframeElement.allow = "geolocation*;microphone;camera;midi;encrypted-media;"
 
-    document.getElementById("amity-chatframe")[0].appendChild(iframeElement);
- */
-    $("#amity-chatframe").append(
-      "<iframe id='amity-chatframe-iframe'frameborder='0'scrolling='no'marginheight='0'marginwidth='0'src="+iframeUrl+' allowfullscreen="true" allow="geolocation*;microphone;camera;midi;encrypted-media;"></iframe>'
-    );
-    var myIframe = document.getElementById("amity-chatframe-iframe");
-    myIframe &&
-      myIframe.addEventListener("load", function () {
+    document.querySelector(
+      "#amity-chatframe"
+    ).innerHTML += `<iframe id='amity-chatframe-iframe' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src=${iframeUrl}' allowfullscreen="true" allow="geolocation *;microphone;camera;midi;encrypted-media;"></iframe>'`;
+
+    const amityIframe = document.getElementById("amity-chatframe-iframe");
+    amityIframe &&
+      amityIframe.addEventListener("load", function () {
         ChatManager.openChat();
       });
     ChatManager.notAppendIframeYet = false;
   };
   SDKManager.initSetting = function () {
     SDKManager.setting = window.amitySettings;
-    SDKManager.setting.PARENT_ORIGIN = window.location.origin;
     console.log("Starting amity extension...");
-    if (!window.jQuery) {
-      console.error("Amity extension requires jQuery library");
-      return;
-    } else if (!SDKManager.setting) {
-      console.error(
-        "Cannot find configuration variable. Please set your configuration on Setting object."
-      );
-    }
     const APIKEY = this.setting.APIKEY;
-    SDKManager.setting.TOKEN = SDKManager.setting.TOKEN || "";
     SDKManager.setting.UI_TYPE = SDKManager.setting.UI_TYPE || "tray";
     SDKManager.setting.COLOR = SDKManager.setting.COLOR || "#FF9C23";
-    SDKManager.setting.PREFILL_COLOR =
-      SDKManager.setting.PREFILL_COLOR || "grey";
+    SDKManager.setting.PREFILL_COLOR = "grey";
     SDKManager.setting.ICON =
       SDKManager.setting.ICON ||
       "https://upload.amity.ai/amity/images/amity-chaticon-2.svg";
-    SDKManager.setting.TOP_RIGHT_BUTTON =
-      SDKManager.setting.TOP_RIGHT_BUTTON || false;
-    SDKManager.setting.HIDE_ATTACHMENT_ICON =
-      SDKManager.setting.HIDE_ATTACHMENT_ICON || false;
-    SDKManager.setting.CUSTOM_FONT_URL = SDKManager.setting.CUSTOM_FONT_URL
-      ? SDKManager.setting.CUSTOM_FONT_URL
-      : "";
-    SDKManager.setting.FONT_NAME = SDKManager.setting.FONT_NAME || "";
-    SDKManager.setting.INPUT_MODE = SDKManager.setting.INPUT_MODE || "any";
-    SDKManager.setting.BANNER_HEAD_TEXT =
-      SDKManager.setting.BANNER_HEAD_TEXT || "";
-    SDKManager.setting.BANNER_DESCRIPTION_TEXT =
-      SDKManager.setting.BANNER_DESCRIPTION_TEXT || "";
-    //set user answer bg color
-    SDKManager.setting.USER_ANSWER_BG = SDKManager.setting.USER_ANSWER_BG || "";
-    //set user answer font color
-    SDKManager.setting.USER_ANSWER_FONT_COLOR =
-      SDKManager.setting.USER_ANSWER_FONT_COLOR || "";
     //set hover chat button
     SDKManager.setting.IS_HOVER = SDKManager.setting.IS_HOVER || false;
     //set hover item ui
     SDKManager.setting.HOVER_ITEM =
-      SDKManager.setting.HOVER_ITEM ||
-      '<div id="hoverItem" style="position: fixed;bottom: 18pt; right: 18pt;\n                                                                    width:fit-content; justify-content: center; padding: 20px; \n                                                                    display: none; background: #e67e22; border-radius: 10px; \n                                                                    align-items: center">\n                                            <button style="margin-right: 12px;background: #2d3436;border: none;padding: 10px;border-radius: 5px;color: white;">Chat With Us</button>\n\t\t\t\t\t\t\t\t\t\t</div>';
-    SDKManager.setting.RICH_MENU_ID =
-      SDKManager.setting.RICH_MENU_ID || undefined;
-    SDKManager.setting.LOGO = SDKManager.setting.LOGO || undefined;
-    SDKManager.setting.HIGHLIGHT_BUTTON =
-      SDKManager.setting.HIGHLIGHT_BUTTON || undefined;
-    SDKManager.setting.CSSLINK = SDKManager.setting.CSSLINK || "";
-    SDKManager.setting.CAROUSEL_BIG_SIZE = SDKManager.setting.CAROUSEL_BIG_SIZE
-      ? SDKManager.setting.CAROUSEL_BIG_SIZE
-      : null;
-    console.log("HIGH : ", SDKManager.setting.HIGHLIGHT_BUTTON);
-    SDKManager.setting.AVATAR_SIZE = SDKManager.setting.AVATAR_SIZE || "30";
-    if (!SDKManager.setting.CAROUSEL_BUTTON_HIDE_FLOW) {
-      SDKManager.setting.CAROUSEL_BUTTON_HIDE_FLOW = false;
-    }
-    if (!SDKManager.setting.CAROUSEL_SIZE) {
-      SDKManager.setting.CAROUSEL_SIZE = 95;
-    }
-    if (!SDKManager.setting.CLEAR_TICKET_ON_LEAVE) {
-      SDKManager.setting.CLEAR_TICKET_ON_LEAVE = false;
-    }
+      '<div id="hoverItem" style="position: fixed;bottom: 18pt; right: 18pt;\n width:fit-content; justify-content: center; padding: 20px; \n                                                                    display: none; background: #e67e22; border-radius: 10px; \n                                                                    align-items: center">\n                                            <button style="margin-right: 12px;background: #2d3436;border: none;padding: 10px;border-radius: 5px;color: white;">Chat With Us</button>\n\t\t\t\t\t\t\t\t\t\t</div>';
     if (SDKManager.setting.DISABLE_SPIN_ANIMATION === undefined)
       SDKManager.setting.DISABLE_SPIN_ANIMATION = false;
     if (!APIKEY && !SDKManager.setting.USERID) {
@@ -2329,32 +2270,28 @@ const SDKManager = (function () {
     } else return true;
   };
   SDKManager.initHtml = function () {
-    var titleBGcolor = SDKManager.setting.COLOR || "#FF9C23";
-    //get show top right button status
-    // const showTopRightButton = SDKManager.setting.TOP_RIGHT_BUTTON ? 'block' : 'none';
-    var showTopRightButton = "block";
-    // console.log('Top right button',showTopRightButton);
-    var chatbtncolor = titleBGcolor;
-    var chatTitleStyle = SDKManager.setting.CHAT_TITLE_STYLE;
-    var width = SDKManager.setting.SIZE
+    document.getElementsByTagName("head")[0].appendChild(fontawesomeStyle);
+    const titleBGcolor = SDKManager.setting.COLOR || "#FF9C2";
+    const chatbtncolor = titleBGcolor;
+    const width = SDKManager.setting.SIZE
       ? Number(SDKManager.setting.SIZE[0])
       : 45;
-    var height = SDKManager.setting.SIZE
+    const height = SDKManager.setting.SIZE
       ? Number(SDKManager.setting.SIZE[1])
       : 45;
-    var prefillCloseTop = SDKManager.setting.PREFILL_CLOSE_TOP
+    const prefillCloseTop = SDKManager.setting.PREFILL_CLOSE_TOP
       ? Number(SDKManager.setting.PREFILL_CLOSE_TOP)
       : 5;
-    var prefillCloseRight = SDKManager.setting.PREFILL_CLOSE_RIGHT
+    const prefillCloseRight = SDKManager.setting.PREFILL_CLOSE_RIGHT
       ? Number(SDKManager.setting.PREFILL_CLOSE_RIGHT)
       : -15;
-    console.log("scripts are ", $("script"));
     // Create IE + others compatible event handler
-    var eventMethod = !!window.addEventListener
+    const eventMethod = !!window.addEventListener
       ? "addEventListener"
       : "attachEvent";
-    var eventer = window[eventMethod];
-    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    const eventer = window[eventMethod];
+    const messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    const isOriginalIcon = SDKManager.setting.ICON;
     // Listen to message from child window
     eventer(
       messageEvent,
@@ -2380,224 +2317,57 @@ const SDKManager = (function () {
       iframeUrl += "&phoneno=" + SDKManager.setting.PHONENO;
     }
 
-    document.getElementsByTagName("head")[0].appendChild(style);
-    $("body").append(
-      "\n            <div id='amity-chatframe'>\n                <div id = 'amity-chattitle' style = \"" +
-        (chatTitleStyle
-          ? chatTitleStyle
-          : "background: " + titleBGcolor + ";position: relative;") +
-        '">\n                    \n                    <!--add close button on top right-->\n                    <svg \n                        id="close-btn-topright"\n                        onclick="window.amity.closeChat()"\n                        width="15px" height="15px" viewBox="0 0 14 14" style = "\n                        top: 18px;\n                        position: absolute;\n                        right: 15px;\n                        cursor: pointer;\n                        display: ' +
-        showTopRightButton +
-        '"\n                        >\n                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n                            <g transform="translate(-419.000000, -413.000000)">\n                                <g transform="translate(164.000000, 396.000000)"><g>\n                                <g transform="translate(250.000000, 12.000000)"><g>\n                                <g><rect opacity="0.200000003" x="0" y="0" width="24" height="24"></rect><g transform="translate(4.000000, 4.000000)" fill="#ffffff">\n                                <rect transform="translate(8.000000, 8.000000) rotate(45.000000) translate(-8.000000, -8.000000) " x="7" y="-1" width="2" height="18" rx="1"></rect>\n                                <rect transform="translate(8.000000, 8.000000) rotate(135.000000) translate(-8.000000, -8.000000) " x="7" y="-1" width="2" height="18" rx="1"></rect>\n                                </g></g></g></g></g></g></g></g></svg>\n                </div>\n            </div>'
-    );
-    var isOriginalIcon =
-      SDKManager.setting.ICON ==
-      "https://upload.amity.ai/amity/images/amity-chaticon-2.svg";
-    $("body").append(
+    document.querySelector("body").innerHTML += `<div id='amity-chatframe'>
+        <div id='amity-chattitle' style = \""+ (chatTitleStyle ?chatTitleStyle :"background:"+titleBGcolor+";position:relative;")+'">
+            <svg id="close-btn-topright" onclick="window.amity.closeChat()" width="15px" height="15px" viewBox="0 0 14 14" style="top:18px;position:absolute;right:15px;cursor:pointer;display:'+showTopRightButton+'">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(-419.000000,-413.000000)">
+                            <g transform="translate(164.000000,396.000000)"><g>
+                            <g transform="translate(250.000000,12.000000)"><g>
+                        <g>
+                            <rect opacity="0.200000003" x="0" y="0" width="24" height="24"> </rect>
+                            <g transform="translate(4.000000,4.000000)"fill="#ffffff">
+                                <rect transform="translate(8.000000,8.000000)rotate(45.000000)translate(-8.000000,-8.000000)" x="7" y="-1" width="2" height="18" rx="1">
+                                </rect>
+                                <rect transform="translate(8.000000,8.000000)rotate(135.000000)translate(-8.000000,-8.000000)" x="7" y="-1" width="2" height="18" rx="1">
+                                </rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>`;
+
+    document.querySelector("body").innerHTML += `\n
+    <button id='amity-chatbtn' onclick='window.amity.toggleChat()' style =
+    `;
+    document.querySelector("body").innerHTML +=
       '\n        <button id=\'amity-chatbtn\' onclick="window.amity.toggleChat()" style = "\n            width:' +
-        (width + "pt") +
-        "; height:" +
-        (height + "pt") +
-        "; \n            background-color: " +
-        chatbtncolor +
-        ";\n            box-shadow: " +
-        (chatbtncolor === "transparent"
-          ? "none"
-          : "0 1px 4px rgba(0,0,0,0.3),0 2px 32px rgba(0,0,0,0.2)") +
-        ';\n            z-index: 1001;\n        ">\n            <div id="amity-chatclose-icon" tabindex="0" role="button">\n            <svg width="15px" height="15px" viewBox="0 0 14 14" style = "\n                top: 22px;\n                position: absolute;\n                left: 22px;\n            ">\n                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n                    <g transform="translate(-419.000000, -413.000000)">\n\t                    <g transform="translate(164.000000, 396.000000)"><g>\n\t                    <g transform="translate(250.000000, 12.000000)"><g>\n\t                    <g><rect opacity="0.200000003" x="0" y="0" width="24" height="24"></rect><g transform="translate(4.000000, 4.000000)" fill="#ffffff">\n\t                    <rect transform="translate(8.000000, 8.000000) rotate(45.000000) translate(-8.000000, -8.000000) " x="7" y="-1" width="2" height="18" rx="1"></rect>\n\t                    <rect transform="translate(8.000000, 8.000000) rotate(135.000000) translate(-8.000000, -8.000000) " x="7" y="-1" width="2" height="18" rx="1"></rect>\n\t                    </g></g></g></g></g></g></g></g></svg>\n\t        </div>\n            <img id="amity-chat-icon" src = \'' +
-        SDKManager.setting.ICON +
-        "' style = \"\n                    border-radius: " +
-        (isOriginalIcon ? "45pt" : "0pt") +
-        ";\n                    padding: " +
-        (isOriginalIcon ? "10px" : "0pt") +
-        ";\n                    max-width: " +
-        (width - 10 + "pt") +
-        ";\n                    max-height: " +
-        (height + "pt") +
-        ';\n             "/>\n        </button>\n        <div id = "amity-preform" class = "' +
-        SDKManager.setting.UI_TYPE +
-        '" style = "\n            bottom:' +
-        (height + 10 + "pt") +
-        ';\n            z-index: 1000; \n        ">\n        </div>\n        '
-    );
-    if (SDKManager.setting.IS_HOVER) {
-      // let bg = SDKManager.setting.COLOR || '#FF9C23';
-      $("#amity-chatbtn").hover(
-        function () {
-          if (!ChatManager.chatOpened) {
-            $("#amity-chatbtn").append(SDKManager.setting.HOVER_ITEM);
-            $("#hoverItem").css("display", "flex");
-            $("#hoverItem").show();
-            $("#amity-chatbtn").css("box-shadow", "");
-            $("#amity-chatbtn").css(
-              "background-color",
-              "rgba(255, 255, 255, 0)"
-            );
-          }
-        },
-        function () {
-          $("#hoverItem").remove();
-          // $("#amity-chat-icon").show();
-          $("#amity-chatbtn").css(
-            "box-shadow",
-            "rgba(0, 0, 0, 0.3) 0px 1px 4px, rgba(0, 0, 0, 0.2) 0px 2px 32px"
-          );
-          $("#amity-chatbtn").css(
-            "background-color",
-            SDKManager.setting.COLOR || "#FF9C23"
-          );
-        }
-      );
-    }
-    if (
-      SDKManager.setting.PREFILL_NAME ||
-      SDKManager.setting.PREFILL_EMAIL ||
-      SDKManager.setting.PREFILL_PHONE
-    ) {
-      var isFirst = true;
-      $("#amity-preform").append(
-        '\n                <div id = \'amity-preform-input\' class = "amity-preform-dialog" style = "padding-bottom:5pt;" >\n                </div>\n            '
-      );
-      if (SDKManager.setting.PREFORM_INPUT_STYLE) {
-        $("#amity-preform-input").attr(
-          "style",
-          SDKManager.setting.PREFORM_INPUT_STYLE
-        );
-      }
-      $("#amity-preform-input").append(
-        '\n                    <div \n                    style="position: relative; z-index: 10">\n                        <h4 id="header-h4"\n                        style = "background:' +
-          (SDKManager.setting.PREFILL_COLOR || "grey") +
-          ';\n                         padding-right: 30px; padding-left:30px;\n                         word-break: break-word">' +
-          SDKManager.setting.WELCOME_MESSAGE +
-          '</h4>\n                        <button \n                        id="close-prefill-button"\n                        style="top: ' +
-          (prefillCloseTop + "px") +
-          "; right: " +
-          (prefillCloseRight + "px") +
-          ';" \n                        class="amity-preform-close-btn"  \n                        onclick="window.amity.toggleChat()">\n                            <i class="fa fa-times"></i>\n                        </button>\n                    </div>\n            '
-      );
-      if (SDKManager.setting.HEADER_H4_STYLE) {
-        $("#header-h4").attr("style", SDKManager.setting.HEADER_H4_STYLE);
-      }
-      if (SDKManager.setting.CLOSE_PREFILL_BUTTON_STYLE) {
-        $("#close-prefill-button").attr(
-          "style",
-          SDKManager.setting.CLOSE_PREFILL_BUTTON_STYLE
-        );
-      }
-      if (SDKManager.setting.PREFILL_NAME) {
-        $("#amity-preform-input").append(
-          "\n                    " +
-            (isFirst ? "" : "<br/>") +
-            '\n                    <label class = "amity-prefill-label">\n                        <i class="fa fa-tag" style="width:100% !important"/>\n                        <b id="prefill-name-label">Name</b>\n                    </label>\n                    <div id="amity-preform-input-name-wrapper">\n                                        <input placeholder="' +
-            (SDKManager.setting.PREFILL_NAME_PLACEHOLDER || "Enter your name") +
-            '" id="amity-preform-input-name" class = "amity-prefill-field" />\n                    </div>    \n                '
-        );
-        if (
-          SDKManager.setting.PREFILL_NAME_OPTIONAL &&
-          SDKManager.setting.PREFILL_NAME
-        ) {
-          if (
-            !SDKManager.setting.PREFILL_PHONE &&
-            !SDKManager.setting.PREFILL_EMAIL
-          ) {
-            $("#amity-preform-input-name-wrapper").append(
-              '<button id="prefill-name-submit" onclick="PrefillManager.submitPrefillInformation()" ><i class="fa fa-chevron-right"/></button>'
-            );
-          }
-          if (SDKManager.setting.PREFILL_NAME_SUBMIT_STYLE) {
-            $("#prefill-name-submit").attr(
-              "style",
-              SDKManager.setting.PREFILL_NAME_SUBMIT_STYLE
-            );
-          }
-        }
-        if (SDKManager.setting.PREFILL_NAME_WRAPPER_STYLE) {
-          $("#amity-preform-input-name-wrapper").attr(
-            "style",
-            SDKManager.setting.PREFILL_NAME_WRAPPER_STYLE
-          );
-        }
-        if (SDKManager.setting.PREFILL_NAME_LABEL_STYLE) {
-          $("#prefill-name-label").attr(
-            "style",
-            SDKManager.setting.PREFILL_NAME_LABEL_STYLE
-          );
-        }
-        if (SDKManager.setting.PREFORM_INPUT_NAME_STYLE) {
-          $("#amity-preform-input-name").attr(
-            "style",
-            SDKManager.setting.PREFORM_INPUT_NAME_STYLE
-          );
-        }
-        isFirst = false;
-      }
-      if (SDKManager.setting.PREFILL_EMAIL) {
-        $("#amity-preform-input").append(
-          "\n                    " +
-            (isFirst ? "" : "<br/>") +
-            '\n                    <label class = "amity-prefill-label">\n                        <i class="fa fa-envelope" />\n                        <b>Email</b>\n                    </label>\n                    <input placeholder="' +
-            (SDKManager.setting.PREFILL_EMAIL_PLACEHOLDER ||
-              "Enter your email") +
-            '" \n                            id="amity-preform-input-email" class="amity-prefill-field" type="email" required/>\n                '
-        );
-        isFirst = false;
-      }
-      if (SDKManager.setting.PREFILL_PHONE) {
-        $("#amity-preform-input").append(
-          "\n                    " +
-            (isFirst ? "" : "<br/>") +
-            '\n                    <label class = "amity-prefill-label">\n                        <i class="fa fa-phone" />\n                        <b>Phone</b>\n                    </label>\n                    <input placeholder="' +
-            (SDKManager.setting.PREFILL_PHONE_PLACEHOLDER ||
-              "Enter your phone") +
-            '" \n                            id="amity-preform-input-phone" class="amity-prefill-field"/>\n                '
-        );
-      }
-      $("#amity-preform-input").append(
-        '\n                <div class="amity-prefill-submit-container" id="prefill-submit-container">\n                <button onclick="PrefillManager.submitPrefillInformation(' +
-          !!SDKManager.setting.PREFILL_SKIPABLE +
-          ')" \n                    class="amity-prefill-submit"\n                    id="prefill-submit">\n                    <i class="fa fa-chevron-right"  id="prefill-submit-icon"/>\n                    </button>\n                </div>\n                '
-      );
-      if (SDKManager.setting.PREFILL_SUBMIT_CONTAINER_STYLE) {
-        $("#prefill-submit-container").attr(
-          "style",
-          SDKManager.setting.PREFILL_SUBMIT_CONTAINER_STYLE
-        );
-      }
-      if (SDKManager.setting.PREFILL_SUBMIT_STYLE) {
-        $("#prefill-submit").attr(
-          "style",
-          SDKManager.setting.PREFILL_SUBMIT_STYLE
-        );
-      }
-      if (SDKManager.setting.PREFILL_SUBMIT_ICON_STYLE) {
-        $("#prefill-submit-icon").attr(
-          "style",
-          SDKManager.setting.PREFILL_SUBMIT_ICON_STYLE
-        );
-      }
-      if (SDKManager.setting.PREFILL_SUBMIT_TEXT) {
-        $("#prefill-submit").append(SDKManager.setting.PREFILL_SUBMIT_TEXT);
-      }
-    }
-    if (SDKManager.setting.amity_chatbtn_add_class_name) {
-      $("#amity-chatbtn").addClass(
-        SDKManager.setting.amity_chatbtn_add_class_name
-      );
-    }
-    if (SDKManager.setting.amity_chatbtn_prepend) {
-      $("#amity-chatbtn").prepend(SDKManager.setting.amity_chatbtn_prepend);
-    }
-    if (SDKManager.setting.PREVENT_TOGGLE) {
-      // Click on Chat Frame
-      $("#amity-chatframe").click(function (event) {
-        event.stopPropagation();
-      });
-      // Click on Chat Button
-      $("#amity-chat-icon").click(function (event) {
-        ChatManager.toggleChat();
-        event.stopPropagation();
-      });
-    }
+      (width + "pt") +
+      "; height:" +
+      (height + "pt") +
+      "; \n            background-color: " +
+      chatbtncolor +
+      ";\n            box-shadow: " +
+      (chatbtncolor === "transparent"
+        ? "none"
+        : "0 1px 4px rgba(0,0,0,0.3),0 2px 32px rgba(0,0,0,0.2)") +
+      ';\n            z-index: 1001;\n        ">\n            <div id="amity-chatclose-icon" tabindex="0" role="button">\n            <svg width="15px" height="15px" viewBox="0 0 14 14" style = "\n                top: 22px;\n                position: absolute;\n                left: 22px;\n            ">\n                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n                    <g transform="translate(-419.000000, -413.000000)">\n\t                    <g transform="translate(164.000000, 396.000000)"><g>\n\t                    <g transform="translate(250.000000, 12.000000)"><g>\n\t                    <g><rect opacity="0.200000003" x="0" y="0" width="24" height="24"></rect><g transform="translate(4.000000, 4.000000)" fill="#ffffff">\n\t                    <rect transform="translate(8.000000, 8.000000) rotate(45.000000) translate(-8.000000, -8.000000) " x="7" y="-1" width="2" height="18" rx="1"></rect>\n\t                    <rect transform="translate(8.000000, 8.000000) rotate(135.000000) translate(-8.000000, -8.000000) " x="7" y="-1" width="2" height="18" rx="1"></rect>\n\t                    </g></g></g></g></g></g></g></g></svg>\n\t        </div>\n            <img id="amity-chat-icon" src = \'' +
+      SDKManager.setting.ICON +
+      "' style = \"\n                    border-radius: " +
+      (isOriginalIcon ? "45pt" : "0pt") +
+      ";\n                    padding: " +
+      (isOriginalIcon ? "10px" : "0pt") +
+      ";\n                    max-width: " +
+      (width - 10 + "pt") +
+      ";\n                    max-height: " +
+      (height + "pt") +
+      ';\n             "/>\n        </button>\n        <div id = "amity-preform" class = "' +
+      SDKManager.setting.UI_TYPE +
+      '" style = "\n            bottom:' +
+      (height + 10 + "pt") +
+      ';\n            z-index: 1000; \n        ">\n        </div>\n        ';
   };
   SDKManager.initIframeApp = function () {
     console.log("initing iframe setting");
@@ -2605,400 +2375,81 @@ const SDKManager = (function () {
   };
   return SDKManager;
 })();
-var PrefillManager = (function () {
-  function PrefillManager() {}
-  PrefillManager.validatePrefillEmail = function () {
-    var dom = $("#amity-preform-input-email");
-    var validateAlertDom = $(".validate-email-alert");
-    dom.css("border-color", "#ccc");
-    dom.css("margin-bottom", "");
-    validateAlertDom.remove();
-    var email = dom.val();
-    var passed =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        email
-      );
-    if (!passed) {
-      dom.css("border-color", "red");
-      dom.css("margin-bottom", "0");
-      $(
-        "<span " +
-          'class="validate-email-alert" ' +
-          'style="color: red;font-size: small;">' +
-          "Please enter a valid email address." +
-          "</span>"
-      ).insertAfter(dom);
-    }
-    return passed ? email : null;
-  };
-  PrefillManager.validatePrefillPhone = function () {
-    var dom = $("#amity-preform-input-phone");
-    dom.css("border-color", "#ccc");
-    var phone = dom.val();
-    var passed = this.PHONE_REGEX.test(phone);
-    if (!passed) dom.css("border-color", "red");
-    return passed ? this.formatPhoneNumber(phone) : null;
-  };
-  PrefillManager.validatePrefillName = function (skip) {
-    var dom = $("#amity-preform-input-name");
-    var name = dom.val() || null;
-    if ($("#amity-preform-input-name-wrapper")) {
-      dom = $("#amity-preform-input-name-wrapper");
-    }
-    dom.css("border-color", "#ccc");
-    var passed = !!name || (SDKManager.setting.PREFILL_NAME_OPTIONAL && skip);
-    dom.blur();
-    $("#prefill-name-submit").blur();
-    if (!passed) dom.css("border-color", "red");
-    return passed ? name : null;
-  };
-  PrefillManager.submitPrefillInformation = function (skip) {
-    if (skip === void 0) {
-      skip = false;
-    }
-    var json = {};
-    var name =
-      PrefillManager.validatePrefillName(skip) || CookieManager.getUserName();
-    var email =
-      PrefillManager.validatePrefillEmail() || CookieManager.getUserEmail();
-    var phone =
-      PrefillManager.validatePrefillPhone() || CookieManager.getUserPhone();
-    if (SDKManager.setting.PREFILL_NAME)
-      if (name && !skip) {
-        json.name = name;
-        CookieManager.createCookie("amity_user_name", name, 1000);
-      } else if (!SDKManager.setting.PREFILL_NAME_OPTIONAL || !skip) {
-        return;
-      }
-    if (SDKManager.setting.PREFILL_EMAIL)
-      if (email && !skip) {
-        json.email = email;
-        CookieManager.createCookie("amity_user_email", email, 1000);
-      } else return;
-    if (SDKManager.setting.PREFILL_PHONE)
-      if (phone && !skip) {
-        json.phone = phone;
-        CookieManager.createCookie("amity_user_phone", phone, 1000);
-      } else return;
-    json.language = SDKManager.setting.LANGUAGE;
-    // Send update info request to ChatApp.tsx and wait for message updateInfoComplete
-    if (ChatManager.notAppendIframeYet) {
-      SDKManager.appendIframe();
-    }
-    $("#amity-preform-input>button>i").attr("class", "fa fa-spinner fa-spin");
-  };
-  // Verify whether the detected email belongs to a domain name defined in the entity configuration
-  PrefillManager.formatPhoneNumber = function (phone) {
-    phone = phone.replace(/[.\s\-()]/gi, "");
-    return phone;
-  };
-  PrefillManager.PHONE_REGEX =
-    /(\+?(\d{1,3}))?[- (]*(\d{2,3})[- )]*(\d{3})[- ]*(\d{4})(?: *[x/#]{1}(\d+))?/gi;
-  return PrefillManager;
-})();
 
-function receiveMessageFromIframe(json) {
-  console.log("message received from app: ", json);
-  // Update info has been completed, open the chat
-  if (json.topic == "updateInfoComplete") {
-    if (json.payload.info) {
-      if (json.payload.info.name) {
-        CookieManager.createCookie(
-          "amity_user_name",
-          json.payload.info.name,
-          1000
-        );
-      }
-      if (json.payload.info.phone) {
-        CookieManager.createCookie(
-          "amity_user_phone",
-          json.payload.info.phone,
-          1000
-        );
-      }
-      if (json.payload.info.email) {
-        CookieManager.createCookie(
-          "amity_user_email",
-          json.payload.info.email,
-          1000
-        );
-      }
-      if (json.payload.info.external_id) {
-        CookieManager.createCookie(
-          "amity_user_external_id",
-          json.payload.info.external_id,
-          1000
-        );
-      }
-    }
-    if (
-      json.payload.toggleOpenChat === undefined ||
-      json.payload.toggleOpenChat == true
-    ) {
-      ChatManager.doOpenChat();
-    }
-  } else if (json.topic == "initComplete") {
-    ChatManager.onChatReady();
-  } else if (json.topic == "setUserId") {
-    CookieManager.createCookie(
-      "uid_" + SDKManager.setting.APP_ID,
-      json.payload,
-      1000
-    );
-  } else if (json.topic === "agent") {
-    if (SDKManager.setting.ON_MESSAGE_IN) {
-      SDKManager.setting.ON_MESSAGE_IN();
-    } else {
-      if ($("#amity-chatframe").is(":visible") === false) {
-        $("#amity-chatbtn").append("<div class='new-message-badge'>new</div>");
-        $("#amity-chat-icon").addClass("shake");
-        setTimeout(function () {
-          $("#amity-chat-icon").removeClass("shake");
-        }, 1000);
-      }
-    }
-  } else if (typeof json === "string") {
-    var str = json;
-    if (str.includes("__NX_")) {
-      if (window.ReactNativeWebView) {
-        window.ReactNativeWebView.postMessage(JSON.stringify(str));
-      }
-    }
-  }
-}
-var CookieManager = (function () {
-  function CookieManager() {}
-  CookieManager.getUserName = function () {
-    return CookieManager.readCookie("amity_user_name");
-  };
-  CookieManager.getUserPhone = function () {
-    return CookieManager.readCookie("amity_user_phone");
-  };
-  CookieManager.getUserEmail = function () {
-    return CookieManager.readCookie("amity_user_email");
-  };
-  CookieManager.getUserId = function (appId) {
-    var applicationId = appId
-      ? appId
-      : SDKManager.setting && SDKManager.setting.APP_ID;
-    return CookieManager.readCookie("uid_" + applicationId);
-  };
-  CookieManager.getExternalId = function () {
-    return CookieManager.readCookie("amity_user_external_id");
-  };
-  CookieManager.renewCookie = function (name, days) {
-    var value = this.readCookie(name) || "";
-    this.createCookie(name, value, days);
-  };
-  CookieManager.createCookie = function (name, value, days) {
-    var expires;
-    if (days) {
-      var date = new Date();
-      date.setDate(date.getDate() + days);
-      expires = "; expires=" + date.toUTCString();
-    } else {
-      expires = "";
-    }
-    document.cookie =
-      encodeURIComponent(name) +
-      "=" +
-      encodeURIComponent(value) +
-      expires +
-      "; path=/";
-  };
-  CookieManager.readCookie = function (name) {
-    var ret = null;
-    var nameEQ = encodeURIComponent(name) + "=";
-    var ca = document.cookie.split(";");
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) === " ") c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) === 0)
-        ret = decodeURIComponent(c.substring(nameEQ.length, c.length));
-    }
-    return ret;
-  };
-  CookieManager.eraseCookie = function (name) {
-    this.createCookie(name, "", -1);
-  };
-  return CookieManager;
-})();
-var ChatManager = (function () {
+const ChatManager = (function () {
   function ChatManager() {}
-  ChatManager.prefillFormDone = function () {
-    return (
-      (CookieManager.getUserName() || !SDKManager.setting.PREFILL_NAME) &&
-      (CookieManager.getUserPhone() || !SDKManager.setting.PREFILL_PHONE) &&
-      (CookieManager.getUserEmail() || !SDKManager.setting.PREFILL_EMAIL)
-    );
-  };
-  ChatManager.requirePrefillForm = function () {
-    return (
-      SDKManager.setting.PREFILL_NAME ||
-      SDKManager.setting.PREFILL_PHONE ||
-      SDKManager.setting.PREFILL_EMAIL
-    );
-  };
-  ChatManager.openPrefillForm = function () {
-    if (ChatManager.chatOpened) ChatManager.closeChat();
-    if (ChatManager.prefillFormOpened) return;
-    ChatManager.prefillFormOpened = true;
-    $("#amity-preform")
-      .fadeIn("fast")
-      .animate(
-        {
-          bottom:
-            (SDKManager.setting.SIZE
-              ? Number(SDKManager.setting.SIZE[1])
-              : 50) +
-            10 +
-            "pt",
-        },
-        { duration: "fast", queue: false },
-        function () {
-          // Animation complete.
-        }
-      );
-  };
-  ChatManager.closePrefillForm = function () {
-    if (!ChatManager.prefillFormOpened) return;
-    ChatManager.prefillFormOpened = false;
-    $("#amity-preform")
-      .fadeOut("fast")
-      .animate(
-        {
-          bottom: "55pt",
-        },
-        { duration: "fast", queue: false },
-        function () {
-          // Animation complete.
-        }
-      );
-  };
   ChatManager.onChatReady = function () {
-    $("#amity-chatbtn").css("visibility", "visible");
+    document.querySelector("#amity-chatbtn").style.visibility = "visible";
     if (SDKManager.setting.ONCHATREADY) {
       SDKManager.setting.ONCHATREADY();
     }
   };
   ChatManager.openChat = function () {
-    if (SDKManager.setting.IS_HOVER) {
-      $("#hoverItem").remove();
-      // $("#amity-chatbtn").hide();
-      $("#amity-chatbtn").css(
-        "box-shadow",
-        "rgba(0, 0, 0, 0.3) 0px 1px 4px, rgba(0, 0, 0, 0.2) 0px 2px 32px"
-      );
-      $("#amity-chatbtn").css(
-        "background-color",
-        SDKManager.setting.COLOR || "#FF9C23"
-      );
-    }
-    if (ChatManager.requirePrefillForm() && !ChatManager.prefillFormDone())
-      ChatManager.openPrefillForm();
-    else {
-      ChatManager.doOpenChat();
-    }
+    ChatManager.doOpenChat();
   };
   ChatManager.doOpenChat = function () {
-    $("#amity-chatbtn .new-message-badge").remove();
-    if (ChatManager.prefillFormOpened) ChatManager.closePrefillForm();
     if (ChatManager.chatOpened && ChatManager.notAppendIframeYet) return;
+    const bg = SDKManager.setting.COLOR || "#FF9C23";
+    const amityChatFrame = document.querySelector("#amity-chatframe");
+    const amityChatButton = document.querySelector("#amity-chatbtn");
+    const amityChatIcon = document.querySelector("#amity-chat-icon");
+    const amityChatCloseIcon = document.querySelector("#amity-chatclose-icon");
+    amityChatFrame.style.display = "block";
+    amityChatFrame.style.transition = "opacity 5s ease 5s";
+    amityChatFrame.style.opacity = "1";
+    amityChatFrame.style.bottom = "114px";
     ChatManager.chatOpened = true;
 
-    $("#amity-chatframe")
-      .fadeIn("fast")
-      .animate(
-        {
-          bottom: "114px",
-          //bottom: "20px",
-        },
-        { duration: "fast", queue: false },
-        function () {
-          // Animation complete.
-        }
-      );
-    var bg = SDKManager.setting.COLOR || "#FF9C23";
-    if (!SDKManager.setting.TOP_RIGHT_BUTTON) {
-      if (SDKManager.setting.DISABLE_SPIN_ANIMATION) {
-        setTimeout(function () {
-          $("#amity-chatbtn").css({
-            width: "45pt",
-            height: "45pt",
-            "background-color": bg,
-          });
-        }, 150);
-      } else if (!SDKManager.setting.DISABLE_SPIN_ANIMATION) {
-        $("#amity-chatbtn")
-          .addClass("opened")
-          .animate(
-            { rotation: 360 },
-            {
-              duration: 100,
-              step: function (now, fx) {
-                if (!SDKManager.setting.IS_HOVER) {
-                  $(this).css({ transform: "rotate(" + now + "deg)" });
-                }
-              },
-            }
-          );
-        $("#amity-chatbtn").css({
-          width: "45pt",
-          height: "45pt",
-          "background-color": bg,
-        });
-      }
-      $("#amity-chat-icon").fadeOut("fast");
-      $("#amity-chatclose-icon").fadeIn("fast");
-    }
+    amityChatButton.classList.add("opened");
+    amityChatButton.style.width = "45pt";
+    amityChatButton.style.height = "45pt";
+    amityChatButton.style.backgroundColor = bg;
+
+    amityChatIcon.style.transition = "opacity 5s ease 5s";
+    amityChatIcon.style.opacity = "0";
+    amityChatIcon.style.display = "none";
+
+    amityChatCloseIcon.style.transition = "opacity 5s ease 5s";
+    amityChatCloseIcon.style.opacity = "1";
+    amityChatCloseIcon.style.display = "block";
   };
   ChatManager.closeChat = function () {
     if (!ChatManager.chatOpened) return;
+    const amityChatFrame = document.querySelector("#amity-chatframe");
+    const amityChatButton = document.querySelector("#amity-chatbtn");
+    const amityChatIcon = document.querySelector("#amity-chat-icon");
+    const amityChatCloseIcon = document.querySelector("#amity-chatclose-icon");
+    amityChatFrame.style.transition = "opacity 5s ease 5s";
+    amityChatFrame.style.opacity = "0";
+    amityChatFrame.style.bottom = "75px";
+    amityChatFrame.style.display = "none";
+
+    amityChatButton.classList.remove("opened");
     ChatManager.chatOpened = false;
-    $("#amity-chatframe")
-      .fadeOut("fast")
-      .animate(
-        {
-          bottom: "75px",
-        },
-        { duration: "fast", queue: false },
-        function () {
-          // Animation complete.
-        }
-      );
-    $("#amity-chatbtn")
-      .removeClass("opened")
-      .animate(
-        { rotation: 0 },
-        {
-          duration: 100,
-          step: function (now, fx) {
-            if (!SDKManager.setting.IS_HOVER) {
-              $(this).css({ transform: "rotate(" + now + "deg)" });
-            }
-          },
-        }
-      );
-    var bg = SDKManager.setting.COLOR || "#FF9C23";
-    var wd = SDKManager.setting.SIZE
+
+    const bg = SDKManager.setting.COLOR || "#FF9C23";
+    const wd = SDKManager.setting.SIZE
       ? SDKManager.setting.SIZE[0] + "pt"
       : "45pt";
-    var ht = SDKManager.setting.SIZE
+    const ht = SDKManager.setting.SIZE
       ? SDKManager.setting.SIZE[1] + "pt"
       : "45pt";
-    $("#amity-chatbtn").css({
-      width: wd,
-      height: ht,
-      "background-color": bg,
-    });
-    $("#amity-chatclose-icon").fadeOut("fast");
-    $("#amity-chat-icon").fadeIn("fast");
-    $("#amity-chatbtn").css({ display: "block" });
+
+    amityChatButton.style.wd = "45pt";
+    amityChatButton.style.ht = "45pt";
+    amityChatButton.style.backgroundColor = bg;
+
+    amityChatCloseIcon.style.transition = "opacity 5s ease 5s";
+    amityChatCloseIcon.style.opacity = "0";
+    amityChatCloseIcon.style.display = "none";
+
+    amityChatIcon.style.transition = "opacity 5s ease 5s";
+    amityChatIcon.style.opacity = "1";
+    amityChatIcon.style.display = "block";
+    
   };
   ChatManager.toggleChat = function () {
     if (ChatManager.chatOpened) ChatManager.closeChat();
-    else if (!ChatManager.prefillFormDone() && ChatManager.requirePrefillForm())
-      ChatManager.togglePrefillForm();
     else {
       if (ChatManager.notAppendIframeYet) {
         SDKManager.appendIframe();
@@ -3015,11 +2466,19 @@ var ChatManager = (function () {
   ChatManager.notAppendIframeYet = true;
   return ChatManager;
 })();
+
+const rotate = (className) => {
+  const elements = document.querySelector(className);
+  [].forEach.call(elements, function (element, i) {
+    console.log(element);
+    setTimeout(function () {
+      element.classList.add("rotate");
+    }, i * 300);
+  });
+};
+
 window.amity = {
   openChat: ChatManager.openChat,
   closeChat: ChatManager.closeChat,
   toggleChat: ChatManager.toggleChat,
-  getUserId: CookieManager.getUserId,
-  getUserName: CookieManager.getUserName,
-  getExternalUserId: CookieManager.getExternalId,
 };
