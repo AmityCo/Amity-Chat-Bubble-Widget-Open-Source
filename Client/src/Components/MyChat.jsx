@@ -7,8 +7,7 @@ import { Avatar, Badge } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { makeSearchApi } from "./Redux/Searching/action";
 import { useSelector } from "react-redux";
-import { accessChat, makeRecentChatApi } from "./Redux/RecentChat/action";
-import { selectChat } from "./Redux/Chatting/action";
+
 import { removeSeenMsg } from "./Redux/Notification/action";
 import {
   ChannelRepository,
@@ -26,35 +25,23 @@ export const MyChat = ({ onClickStartChat }) => {
   const [recentChat, setRecentChat] = useState([]);
   const [recentFilterChat, setRecentFilterChat] = useState([]);
   const [searchFilterChat, setSearchFilterChat] = useState([]);
-  console.log("recentFilterChat: ", recentFilterChat);
-  console.log("recentChat: ", recentChat);
   const [channelList, setChannelList] = useState([]);
   const [role, setRole] = useState("");
   const [permittedRole, setPermittedRole] = useState([]);
-  // console.log("role: ", role);
   const { search_result, loading, error } = useSelector(
     (store) => store.search
   );
   const { recent_chat, loading: chat_loading } = useSelector(
     (store) => store.recentChat
   );
-  const SEARCH_RESULT = "SEARCH_RESULT";
-  const searchResult = (payload) => ({ type: SEARCH_RESULT, payload });
 
-  const { user, token } = useSelector((store) => store.user);
   const { userId } = useSelector((store) => store.user);
-  // console.log("userId: ", userId);
+
   const { chatting } = useSelector((store) => store.chatting);
-  const { notification, unseenmsg } = useSelector(
-    (store) => store.notification
-  );
+  const { notification } = useSelector((store) => store.notification);
   const dispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
-  // useEffect(() => {
-  //   if (token) dispatch(makeRecentChatApi(token));
-  // }, [user]);
   const ref = useRef();
-
   const handleQuery = (e) => {
     let id;
     return function (e) {
@@ -68,8 +55,6 @@ export const MyChat = ({ onClickStartChat }) => {
     };
   };
   function onClickSearch() {
-    // queryAllUser(keyword);
-
     dispatch(makeSearchApi(keyword));
   }
 
@@ -91,12 +76,6 @@ export const MyChat = ({ onClickStartChat }) => {
     const userIdArr = recentChat.map((item) => item._id);
     const userWithRole = await getUserRole(userIdArr);
 
-    // console.log("userWithRole: ", userWithRole);
-
-    // const permittedUser = userWithRole.filter((item) =>
-    //   permittedRole.includes(item.roles[0])
-    // );
-    // console.log("permittedUser: ", permittedUser);
     setRecentFilterChat(userWithRole);
   }
   function queryRecentChat() {
@@ -129,7 +108,6 @@ export const MyChat = ({ onClickStartChat }) => {
       members = liveCollection.models;
 
       let sender = members && members.filter((item) => item.userId !== account);
-      // console.log("sender: ", sender);
 
       if (sender.length == 1) {
         senderName = sender[0].userId;
@@ -167,32 +145,23 @@ export const MyChat = ({ onClickStartChat }) => {
   function getUser() {
     const liveObject = UserRepository.getUser(userId.userId);
     liveObject.on("dataUpdated", (user) => {
-      console.log("user: ", user);
-      console.log("user: ", user?.roles[0]);
       setRole(user?.roles[0]);
       getRolePermission(user?.roles[0]);
-      // user is successfully fetched
     });
   }
   function getRolePermission(role) {
-    console.log("role: ", role);
     axios
       .post("https://power-school-demo.herokuapp.com/v1/roles", {
         role: role,
       })
       .then(function (response) {
         setPermittedRole(response.data);
-        console.log("role========", response.data);
-      })
-      .catch(function (error) {
-        // console.log(error);
       });
   }
 
   async function getUserRole(role) {
     let result = [];
     const filteredArr = role.filter((item) => item !== "Empty Chat");
-    // console.log("filteredArr: ", filteredArr);
     var config = {
       method: "get",
       url: "https://api.sg.amity.co/api/v3/users/list",
@@ -207,10 +176,8 @@ export const MyChat = ({ onClickStartChat }) => {
       },
     };
 
-    // console.log("config: ", config);
     await axios(config)
       .then(function (response) {
-        console.log("response=========>", response.data.users);
         result = response.data.users;
       })
       .catch(function (error) {
@@ -220,8 +187,6 @@ export const MyChat = ({ onClickStartChat }) => {
     return result;
   }
   useEffect(() => {
-    // dispatch(searchResult(recentChat));
-    // getUserRole();
     getUser();
     getWindowDimensions();
   }, []);
@@ -232,28 +197,23 @@ export const MyChat = ({ onClickStartChat }) => {
     const userIdArrSearch = search_result.map((item) => item._id);
     const userWithRole = await getUserRole(userIdArrSearch);
 
-    console.log("userWithRole: ", userWithRole);
-
     const permittedUser = userWithRole.filter((item) =>
       permittedRole.includes(item.roles[0])
     );
-    console.log("userIdArrSearch: ", userIdArrSearch);
+
     setSearchFilterChat(permittedUser);
   }
 
-  // console.log("search_result: ", search_result);
   return (
     <ChatWrap width={width} height={height}>
-      {/* <div className="mychat-cont"> */}
       <div>
         <div className="notification">
           <h2>Chats </h2>
           <p>role: {role}</p>
-          {/* <NotificationsIcon /> */}
+
           <Badge badgeContent={notification} color="error">
             <Notificationcomp />
           </Badge>
-          {/* <AddIcon /> */}
         </div>
         <div className="search-cont">
           <SearchIcon onClick={onClickSearch} />
@@ -276,8 +236,6 @@ export const MyChat = ({ onClickStartChat }) => {
                   onClickStartChat={onClickStartChat}
                   key={el._id}
                   {...el}
-                  token={token}
-                  recent_chat={recent_chat}
                   setSearch={setSearch}
                 />
               ))
@@ -286,14 +244,11 @@ export const MyChat = ({ onClickStartChat }) => {
                   onClickStartChat={onClickStartChat}
                   key={el._id}
                   {...el}
-                  token={token}
-                  recent_chat={recent_chat}
                   setSearch={setSearch}
                 />
               ))}
         </div>
       </div>
-      {/* </div> */}
     </ChatWrap>
   );
 };
@@ -302,9 +257,6 @@ export default function Notificationcomp() {
   const { unseenmsg } = useSelector((store) => store.notification);
   const [anchorEl, setAnchorEl] = useState(null);
   const dispatch = useDispatch();
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -316,11 +268,6 @@ export default function Notificationcomp() {
 
   return (
     <div>
-      {/* <NotificationsIcon
-        color="black"
-        aria-describedby={id}
-        onClick={handleClick}
-      /> */}
       <Popover
         id={id}
         open={open}
@@ -344,78 +291,11 @@ export default function Notificationcomp() {
     </div>
   );
 }
-const ChatUserComp = ({
-  isGroupChat,
-  chatName,
-  users,
-  latestMessage,
-  id,
-  _id,
-  index,
-  chattingwith,
-}) => {
-  const dispatch = useDispatch();
-  const handleSelectChat = () => {
-    dispatch(
-      selectChat({
-        isGroupChat,
-        index,
-        user: users.find((el) => el._id != id),
-        _id,
-        chatName,
-      })
-    );
-  };
-  return (
-    <div
-      onClick={handleSelectChat}
-      // className={chattingwith == _id ? "user selectUser" : "user"}
-    >
-      <div className="history-cont">
-        {isGroupChat ? (
-          <div>{<Avatar>G</Avatar>}</div>
-        ) : (
-          <div>{<Avatar src={users.find((el) => el._id != id)?.pic} />}</div>
-        )}
-        <div>
-          {isGroupChat ? (
-            <p className="name">{chatName}</p>
-          ) : (
-            <p className="name">{users.find((el) => el._id != id)?.name}</p>
-          )}
-          <p className="chat">
-            {latestMessage
-              ? latestMessage.content.length > 8
-                ? latestMessage.content.substring(0, 30) + " . . ."
-                : latestMessage.content
-              : ""}
-          </p>
-        </div>
-      </div>
-      <div>
-        {latestMessage ? (
-          <p className="time">
-            {new Date(latestMessage?.updatedAt).getHours() +
-              ":" +
-              new Date(latestMessage?.updatedAt).getMinutes()}
-          </p>
-        ) : (
-          ""
-        )}
-        {/* <p className="unseen-chat">5</p> */}
-      </div>
-    </div>
-  );
-};
 
 export const SearchUserComp = ({
   _id,
-  email,
   displayName,
   pic,
-  token,
-  recent_chat,
-  setSearch,
   onClickStartChat,
   avatarFileId,
   userId,
@@ -440,11 +320,7 @@ export const SearchUserComp = ({
       });
   }
   const handleSubmitForAcceChat = () => {
-    // dispatch(accessChat(_id, token, recent_chat));
-
     const ownUserId = storeUserData.userId.userId;
-    // setSearch(false);
-    console.log("userIdArr", [ownUserId, userId]);
     onClickStartChat && onClickStartChat(false);
     const liveChannel = ChannelRepository.createChannel({
       type: ChannelType.Conversation,
@@ -452,7 +328,6 @@ export const SearchUserComp = ({
       displayName: `${ownUserId},${userId}`,
     });
     liveChannel.once("dataUpdated", (data) => {
-      console.log("channel created", data);
       dispatch(
         selectChat({
           isGroupChat: false,
@@ -482,7 +357,6 @@ export const SearchUserComp = ({
         </div>
         <div>
           <p className="name">{displayName}</p>
-          {/* <p className="chat">Email: {email}</p> */}
         </div>
       </div>
     </div>
@@ -494,7 +368,7 @@ const ChatWrap = styled.div`
   height: 100%;
 
   background-color: #f5f7fb;
-  /* Adapt the colors based on primary prop */
+
   @media only screen and (max-width: 600px) {
     width: ${(props) => `${props.width}px`};
   */

@@ -1,12 +1,9 @@
 body {
   margin: 0px;
-  /* background-image: url("./Components/Auth/green-bg.jpg"); */
-  /* background-size: cover; */
   box-sizing: border-box;
   background: #f5f7fb;
 }
 
-/* side nav bar */
 .side-nav {
   min-width: 70px;
   max-width: 70px;
@@ -41,9 +38,6 @@ body {
   font-size: 1.7rem;
 }
 
-.home-cont {
-  /* display: flex; */
-}
 .mychat-cont {
   color: #ffffff;
   width: 26%;
@@ -197,13 +191,10 @@ p {
   margin-right: 20px;
 }
 .live-chat {
-  /* border: 2px solid red; */
   width: 100%;
-  /* padding: 10px; */
   max-height: 75%;
   height: 75%;
   box-sizing: border-box;
-  /* overflow-y: hidden; */
   overflow: auto;
 }
 .live-chat::-webkit-scrollbar {
@@ -255,11 +246,8 @@ p {
   /* margin: 5px; */
 }
 .left-avt {
-  /* border: 2px solid black; */
   display: flex;
   align-items: center;
-  /* gap: 10px; */
-  /* margin: 5px; */
 }
 .left-msg {
   background-color: #27b48c;

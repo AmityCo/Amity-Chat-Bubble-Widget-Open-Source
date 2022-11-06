@@ -1,24 +1,16 @@
 import { Avatar, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import CallIcon from "@mui/icons-material/Call";
-import VideoCallIcon from "@mui/icons-material/VideoCall";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import styled from "@emotion/styled";
 import SendIcon from "@mui/icons-material/Send";
 import InputEmoji from "react-input-emoji";
-import React, { createRef, useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { ChatlogicStyling, isSameSender } from "./ChatstyleLogic";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCurrentMessages, sendMessageApi } from "./Redux/Chatting/action";
-import { sendMessage } from "./Redux/Chatting/action";
-import { addUnseenmsg } from "./Redux/Notification/action";
 import { MessageRepository } from "@amityco/js-sdk";
 import { MdOutlineArrowBackIos } from "react-icons/md";
-const SERVER_POINT = "https://messenger-clo.herokuapp.com";
-var socket, currentChattingWith;
 
 export const ChattingPage = ({ onClickStartChat }) => {
-  const { user, token } = useSelector((store) => store.user);
   const { messages } = useSelector((store) => store.chatting);
   const reduxUserStore = useSelector((store) => store.user);
   const messagesEndRef = useRef(null);
@@ -34,7 +26,7 @@ export const ChattingPage = ({ onClickStartChat }) => {
   };
 
   const [chatMessage, setChatMessage] = useState([]);
-  var { unseenmsg } = useSelector((store) => store.notification);
+
   const {
     chatting: {
       isGroupChat,
@@ -44,13 +36,7 @@ export const ChattingPage = ({ onClickStartChat }) => {
     },
   } = useSelector((store) => store.chatting);
   const userStore = useSelector((store) => store.user);
-  console.log("userStore: ", userStore);
-  const scrolldiv = createRef();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   scrollToBottom();
-  // }, [messages]);
 
   function queryChatMessage() {
     const liveCollection = MessageRepository.queryMessages({ channelId: _id });
@@ -97,19 +83,13 @@ export const ChattingPage = ({ onClickStartChat }) => {
   }, [_id]);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-  console.log("width: ", width);
+
   function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
-    console.log("width: ", width);
     setWidth(width);
     setHeight(height);
-    // return {
-    //   width,
-    //   height
-    // };
   }
   useEffect(() => {
-    // dispatch(searchResult(recentChat));
     getWindowDimensions();
   }, []);
   function goBack() {
@@ -124,7 +104,6 @@ export const ChattingPage = ({ onClickStartChat }) => {
   }
   return (
     <ChatWrap width={width}>
-      {/* <div className="chattingpage"> */}
       <div className="top-header">
         <div className="user-header">
           <MdOutlineArrowBackIos
@@ -139,8 +118,6 @@ export const ChattingPage = ({ onClickStartChat }) => {
         <div>
           <div className="user-fet">
             <SearchIcon />
-            {/* <CallIcon />
-            <VideoCallIcon /> */}
             <MoreHorizIcon />
           </div>
         </div>
@@ -190,14 +167,8 @@ export const ChattingPage = ({ onClickStartChat }) => {
         ))}
       </div>
       <div className="sender-cont">
-        <InputContWithEmog
-          id={_id}
-          token={token}
-          socket={socket}
-          onSendChat={scrollToBottom}
-        />
+        <InputContWithEmog id={_id} onSendChat={scrollToBottom} />
       </div>
-      {/* </div> */}
     </ChatWrap>
   );
 };
@@ -209,15 +180,13 @@ const ColorButton = styled(Button)(() => ({
   marginRight: "5px",
 
   backgroundColor: "#27b48c",
-  // paddingLeft: "10px",
+
   "&:hover": {
     backgroundColor: "#0f8e6a",
   },
 }));
-function InputContWithEmog({ id, token, socket, onSendChat }) {
+function InputContWithEmog({ id, onSendChat }) {
   const [text, setText] = useState("");
-
-  // const dispatch = useDispatch();
 
   function sendChatMessage() {
     onSendChat && onSendChat();
@@ -235,16 +204,6 @@ function InputContWithEmog({ id, token, socket, onSendChat }) {
     sendChatMessage();
   }
   function handleChatClick() {
-    // dispatch(
-    //   sendMessageApi(
-    //     {
-    //       content: text,
-    //       chatId: id,
-    //     },
-    //     token,
-    //     socket
-    //   )
-    // );
     sendChatMessage();
     setText("");
   }
@@ -259,20 +218,9 @@ function InputContWithEmog({ id, token, socket, onSendChat }) {
           onEnter={handleOnEnter}
           placeholder="Type a message"
         />
-
-        {/* <ColorButton
-          style={{ position: "absolute" }}
-          onClick={handleChatClick}
-          variant="contained"
-          endIcon={<SendIcon />}
-        ></ColorButton> */}
       </div>
 
-      <ColorButton
-        onClick={handleChatClick}
-        // variant="contained"
-        // endIcon={<SendIcon />}
-      >
+      <ColorButton onClick={handleChatClick}>
         <SendIcon />
       </ColorButton>
     </>
@@ -282,7 +230,7 @@ const ChatWrap = styled.div`
   background-color: white;
   box-shadow: 0 2px 4px rgb(15 34 58 / 12%);
   height: 100vh;
-  /* Adapt the colors based on primary prop */
+
   @media only screen and (max-width: 600px) {
     width: ${(props) => `${props.width}px`};
   */
