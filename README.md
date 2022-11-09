@@ -1,4 +1,4 @@
-# Amity Ui-Kit for Web (open-source)
+# Amity Chat Bubble Widget for Web (open-source)
 
 ## Getting started
 
