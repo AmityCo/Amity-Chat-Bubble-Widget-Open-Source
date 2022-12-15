@@ -1,4 +1,4 @@
-# Amity Ui-Kit for Web (open-source)
+# Amity Chat Bubble Widget for Web (open-source)
 
 ## Getting started
 
@@ -14,6 +14,8 @@ Run the Chat project
 Run the Chat Bubble Widget
 
 1. Go to file chat.html
+2. Config the setting in window.amitySettings 
+3. Open chat.html
 
 ### Documentation
 
