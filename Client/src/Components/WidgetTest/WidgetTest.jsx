@@ -5,7 +5,7 @@ export const WidgetTest = () => {
   return (
     <div className="frame-wrap">
       <Iframe
-        url=""
+        url="http://localhost:3000/register?apiKey={apiKey}&userId={userId}&displayName={displayName}"
         width="372px"
         height="600px"
         id=""
