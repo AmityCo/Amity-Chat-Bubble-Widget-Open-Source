@@ -7,7 +7,7 @@ import { Avatar, Badge } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { makeSearchApi } from "./Redux/Searching/action";
 import { useSelector } from "react-redux";
-
+import bot from './bot.gif'
 import { removeSeenMsg } from "./Redux/Notification/action";
 import {
   ChannelRepository,
@@ -137,27 +137,15 @@ export const MyChat = ({ onClickStartChat }) => {
 
     setWidth(width);
     setHeight(height);
-    // return {
-    //   width,
-    //   height
-    // };
+
   }
   function getUser() {
     const liveObject = UserRepository.getUser(userId.userId);
     liveObject.on("dataUpdated", (user) => {
       setRole(user?.roles[0]);
-      getRolePermission(user?.roles[0]);
     });
   }
-  function getRolePermission(role) {
-    axios
-      .post("https://power-school-demo.herokuapp.com/v1/roles", {
-        role: role,
-      })
-      .then(function (response) {
-        setPermittedRole(response.data);
-      });
-  }
+
 
   async function getUserRole(role) {
     let result = [];
@@ -208,9 +196,7 @@ export const MyChat = ({ onClickStartChat }) => {
     <ChatWrap width={width} height={height}>
       <div>
         <div className="notification">
-          <h2>Chats </h2>
-          <p>role: {role}</p>
-
+          {/* <h2>Chats </h2> */}
           <Badge badgeContent={notification} color="error">
             <Notificationcomp />
           </Badge>
@@ -226,6 +212,10 @@ export const MyChat = ({ onClickStartChat }) => {
         </div>
       </div>
       <div className="recent-chat">
+      <div className="bot-row">
+        <img src={bot} width={60} height={60}/>
+        <h5>ASAP Bot</h5>
+      </div>
         <p className="Recent">
           {search ? `Search ${searchFilterChat.length} results` : "Recent"}
         </p>
@@ -364,11 +354,8 @@ export const SearchUserComp = ({
 };
 const ChatWrap = styled.div`
   color: #ffffff;
-
   height: 100%;
-
-  background-color: #f5f7fb;
-
+  background-color: #ffffff;
   @media only screen and (max-width: 600px) {
     width: ${(props) => `${props.width}px`};
   */

@@ -1,7 +1,7 @@
 body {
   margin: 0px;
   box-sizing: border-box;
-  background: #f5f7fb;
+  background: #ffffff;
 }
 
 .side-nav {
@@ -43,7 +43,7 @@ body {
   width: 26%;
   height: 100%;
 
-  background-color: #f5f7fb;
+  background-color: #ffffff;
 }
 @media only screen and (max-width: 600px) {
   .mychat-cont {
@@ -298,4 +298,9 @@ p {
 }
 svg {
   cursor: pointer;
+}
+.bot-row{
+  display: flex;
+  color: #212121;
+  padding: 11px 13px;
 }
