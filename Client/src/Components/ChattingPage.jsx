@@ -9,7 +9,8 @@ import { ChatlogicStyling, isSameSender } from "./ChatstyleLogic";
 import { useDispatch, useSelector } from "react-redux";
 import { MessageRepository } from "@amityco/js-sdk";
 import { MdOutlineArrowBackIos } from "react-icons/md";
-
+import bot from "./bot.gif";
+import axios from "axios";
 export const ChattingPage = ({ onClickStartChat }) => {
   const { messages } = useSelector((store) => store.chatting);
   const reduxUserStore = useSelector((store) => store.user);
@@ -26,6 +27,7 @@ export const ChattingPage = ({ onClickStartChat }) => {
   };
 
   const [chatMessage, setChatMessage] = useState([]);
+  console.log("chatMessage:", chatMessage);
 
   const {
     chatting: {
@@ -37,7 +39,159 @@ export const ChattingPage = ({ onClickStartChat }) => {
   } = useSelector((store) => store.chatting);
   const userStore = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  function convertDriveLink(originalLink) {
+    var regex = /id=([^&]+)/;
+    var match = originalLink.match(regex);
+    
+    // Check if there's a match and extract the file ID
+    var fileId = match ? match[1] : null;
+    
+    // Construct the new link
+    const convertedLink = `https://drive.google.com/uc?export=view&id=${fileId}`;
+    
+    return convertedLink;
+}
+  function sendBotMessage(text) {
+    console.log("text:", text);
+    scrollToBottom();
+    if (_id === "asapbot") {
+      setChatMessage((prev) => [
+        ...prev,
+        {
+          _id: userStore.userId.userId,
+          sender: {
+            _id: userId,
+            name: "sdsd",
+            email: "dfsdsf@mdvmkodsv.com",
+            pic: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+          },
+          content: text,
+          chat: {
+            _id: "1234",
+            chatName: "sender",
+            isGroupChat: false,
+            users: [userId, reduxUserStore.userId.userId],
+            createdAt: new Date().toString(),
+            updatedAt: new Date().toString(),
+            latestMessage: "633e8d007dbc394e1dd2a711",
+          },
+          readBy: [],
+          createdAt: new Date().toString(),
+          updatedAt: new Date().toString(),
+        },
+      ]);
+      axios.defaults.baseURL = "http://localhost:3000"; // Replace with your backend server URL
 
+      // Enable CORS for all requests
+
+      axios
+        .post(
+          "https://nl3dfksxm0.execute-api.eu-central-1.amazonaws.com/asapbot/hackathon",
+          {
+            session_id: "12345678",
+            message: text,
+          }
+        )
+        .then(function (response) {
+          // Find the position of "Image Link:" in the string
+          const imageLinkIndex = response.data.answer.indexOf("- Image Link:");
+
+          // Find the start and end position of the URL in parentheses
+          const urlStartIndex = response.data.answer.indexOf(
+            "(",
+            imageLinkIndex
+          );
+          const urlEndIndex = response.data.answer.indexOf(")", urlStartIndex);
+
+          // Extract the URL
+          const imageLink = response.data.answer.substring(
+            urlStartIndex + 1,
+            urlEndIndex
+          );
+
+          console.log("Image Link:", imageLink);
+          setChatMessage((prev) => [
+            ...prev,
+            {
+              _id: "asapbot",
+              sender: {
+                _id: "asapbot",
+                name: "sdsd",
+                email: "dfsdsf@mdvmkodsv.com",
+                pic: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+              },
+              content: response.data.answer,
+              chat: {
+                _id: "1234",
+                chatName: "sender",
+                isGroupChat: false,
+                users: ["asapbot", reduxUserStore.userId.userId],
+                createdAt: new Date().toString(),
+                updatedAt: new Date().toString(),
+                latestMessage: "633e8d007dbc394e1dd2a711",
+              },
+              readBy: [],
+              createdAt: new Date().toString(),
+              updatedAt: new Date().toString(),
+            },
+            imageLink?.length > 0 && {
+              _id: "asapbot",
+              sender: {
+                _id: "asapbot",
+                name: "sdsd",
+                email: "dfsdsf@mdvmkodsv.com",
+                pic: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+              },
+              content: convertDriveLink(imageLink),
+              type: "image",
+              chat: {
+                _id: "1234",
+                chatName: "sender",
+                isGroupChat: false,
+                users: ["asapbot", reduxUserStore.userId.userId],
+                createdAt: new Date().toString(),
+                updatedAt: new Date().toString(),
+                latestMessage: "633e8d007dbc394e1dd2a711",
+              },
+              readBy: [],
+              createdAt: new Date().toString(),
+              updatedAt: new Date().toString(),
+            },
+          ]);
+          console.log("response:", response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+    setTimeout(() => {
+      setChatMessage((prev) => [
+        ...prev,
+        {
+          _id: "asapbot",
+          sender: {
+            _id: "asapbot",
+            name: "sdsd",
+            email: "dfsdsf@mdvmkodsv.com",
+            pic: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+          },
+          content: "Let DUDUDE think for a second...",
+          chat: {
+            _id: "1234",
+            chatName: "sender",
+            isGroupChat: false,
+            users: ["asapbot", reduxUserStore.userId.userId],
+            createdAt: new Date().toString(),
+            updatedAt: new Date().toString(),
+            latestMessage: "633e8d007dbc394e1dd2a711",
+          },
+          readBy: [],
+          createdAt: new Date().toString(),
+          updatedAt: new Date().toString(),
+        },
+      ]);
+    }, 750);
+  }
   function queryChatMessage() {
     const liveCollection = MessageRepository.queryMessages({ channelId: _id });
     let messages = liveCollection.models;
@@ -102,6 +256,7 @@ export const ChattingPage = ({ onClickStartChat }) => {
       })
     );
   }
+  console.log(_id);
   return (
     <ChatWrap width={width}>
       <div className="top-header">
@@ -112,7 +267,12 @@ export const ChattingPage = ({ onClickStartChat }) => {
             on
             color="black"
           />
-          <Avatar src={isGroupChat ? "" : pic} />
+          {_id === "asapbot" ? (
+            <img src={bot} width={65} height={65} />
+          ) : (
+            <Avatar src={isGroupChat ? "" : pic} />
+          )}
+
           <p className="user-name">{isGroupChat ? chatName : name}</p>
         </div>
         <div>
@@ -152,7 +312,16 @@ export const ChattingPage = ({ onClickStartChat }) => {
                   userStore["userId"]["userId"]
                 )}
               >
-                <p>{el.content}</p>
+                {el.type === "image" ? (
+                  <img
+                    src={el.content}
+                    style={{ borderRadius: "10px" }}
+                    width={180}
+                    height={200}
+                  />
+                ) : (
+                  <p style={{ whiteSpace: "pre-line" }}>{el.content}</p>
+                )}
               </div>
 
               {isSameSender(messages, index) ? (
@@ -167,7 +336,7 @@ export const ChattingPage = ({ onClickStartChat }) => {
         ))}
       </div>
       <div className="sender-cont">
-        <InputContWithEmog id={_id} onSendChat={scrollToBottom} />
+        <InputContWithEmog id={_id} onSendChat={sendBotMessage} />
       </div>
     </ChatWrap>
   );
@@ -187,9 +356,10 @@ const ColorButton = styled(Button)(() => ({
 }));
 function InputContWithEmog({ id, onSendChat }) {
   const [text, setText] = useState("");
-
+  const { userId } = useSelector((store) => store.user);
+  console.log("userStore:", userId);
   function sendChatMessage() {
-    onSendChat && onSendChat();
+    onSendChat && onSendChat(text);
     const liveObject = MessageRepository.createTextMessage({
       channelId: id,
       text: text,

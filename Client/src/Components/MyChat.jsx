@@ -82,7 +82,7 @@ export const MyChat = ({ onClickStartChat }) => {
     let channels;
 
     const liveCollection = ChannelRepository.queryChannels({
-      types: [ChannelType.Conversation],
+      types: [ChannelType.Conversation, ChannelType.Community],
       filter: ChannelFilter.Member,
       isDeleted: false,
       sortBy: ChannelSortingMethod.LastCreated,
@@ -186,11 +186,58 @@ export const MyChat = ({ onClickStartChat }) => {
     const userWithRole = await getUserRole(userIdArrSearch);
 
     const permittedUser = userWithRole.filter((item) =>
-      permittedRole.includes(item.roles[0])
+      permittedRole
     );
 
     setSearchFilterChat(permittedUser);
   }
+
+  const storeUserData = useSelector((store) => store.user);
+  const chatStoreData = useSelector((store) => store.chatting);
+  	console.log('chatStoreData:', chatStoreData)
+  const SELECT_CHAT = "SELECT_CHAT";
+  const selectChat = (payload) => ({ type: SELECT_CHAT, payload });
+
+  const onClickBot= () => {
+    console.log('pass')
+    const ownUserId = storeUserData.userId.userId;
+    onClickStartChat && onClickStartChat(false);
+    dispatch(
+      selectChat({
+        isGroupChat: false,
+        index: 0,
+        user: {
+          pic: '',
+          name: 'DUDUDE BOT',
+          userId: '',
+        },
+        _id: 'asapbot',
+        chatName: "DUDUDE BOT",
+      })
+    );
+    // const liveChannel = ChannelRepository.createChannel({
+    //   type: ChannelType.Conversation,
+    //   userIds: [ownUserId, userId],
+    //   displayName: `${ownUserId},${userId}`,
+    // });
+    // liveChannel.once("dataUpdated", (data) => {
+    //   dispatch(
+    //     selectChat({
+    //       isGroupChat: false,
+    //       index: 0,
+    //       user: {
+    //         pic: pic,
+    //         name: displayName,
+    //         userId: _id,
+    //       },
+    //       _id: data.channelId,
+    //       chatName: "Mock",
+    //     })
+    //   );
+    //   createChannel(data.channelId, ownUserId, userId);
+    // });
+  };
+
 
   return (
     <ChatWrap width={width} height={height}>
@@ -212,9 +259,9 @@ export const MyChat = ({ onClickStartChat }) => {
         </div>
       </div>
       <div className="recent-chat">
-      <div className="bot-row">
-        <img src={bot} width={60} height={60}/>
-        <h5>ASAP Bot</h5>
+      <div  onClick={onClickBot} className="bot-row">
+        <img src={bot} width={65} height={65}/>
+        <h5>DUDUDE Bot</h5>
       </div>
         <p className="Recent">
           {search ? `Search ${searchFilterChat.length} results` : "Recent"}
@@ -223,15 +270,15 @@ export const MyChat = ({ onClickStartChat }) => {
           {search
             ? searchFilterChat.map((el) => (
                 <SearchUserComp
-                  onClickStartChat={onClickStartChat}
+                  onClickStartChat={onClickBot}
                   key={el._id}
                   {...el}
                   setSearch={setSearch}
                 />
               ))
-            : recentFilterChat.map((el, index) => (
+            : channelList.map((el, index) => (
                 <SearchUserComp
-                  onClickStartChat={onClickStartChat}
+                  onClickStartChat={onClickBot}
                   key={el._id}
                   {...el}
                   setSearch={setSearch}

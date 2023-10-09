@@ -43,7 +43,7 @@ body {
   width: 26%;
   height: 100%;
 
-  background-color: #ffffff;
+  background-color: #f5f7fb;
 }
 @media only screen and (max-width: 600px) {
   .mychat-cont {
@@ -90,6 +90,7 @@ p {
 .recent-chat {
   width: 100%;
   margin: auto;
+  overflow-y: scroll;
 }
 .Recent {
   color: #495057;
@@ -139,8 +140,7 @@ p {
   color: #495057;
   font-family: "Public Sans", sans-serif;
   font-weight: 600;
-  margin-bottom: 0px;
-  margin-left: 14px;
+  margin-left: 15px;
 }
 .chat {
   margin-top: 0px;
@@ -303,4 +303,11 @@ svg {
   display: flex;
   color: #212121;
   padding: 11px 13px;
+  cursor: pointer;
+  margin: 10px;
+}
+.bot-row:hover{
+  margin: 10px;
+  background-color: #e6ebf5;
+  border-radius: 7px;
 }
